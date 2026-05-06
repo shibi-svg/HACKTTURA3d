@@ -1,0 +1,2150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Hacktura Hackers Academy | Cybersecurity Training & Ethical Hacking in Kerala</title>
+    <meta name="description"
+        content="Hacktura Hackers Academy is a Kerala-based cybersecurity training center founded by Shibin KS, focused on empowering students with practical ethical hacking skills.">
+
+    <!-- 🔥 Open Graph START -->
+    <meta property="og:title" content="Hacktura Hackers Academy | Cybersecurity Training & Ethical Hacking in Kerala">
+    <meta property="og:description"
+        content="Founded by Shibin KS, Hacktura Hackers Academy provides elite cybersecurity training and practical ethical hacking labs.">
+    <meta property="og:url" content="https://hackturaacademy.in/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://hackturaacademy.in/images/shibi.jpeg">
+    <!-- 🔥 Open Graph END -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/favicon.png">
+    <meta name="theme-color" content="#4F46E5">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Extended" rel="stylesheet">
+
+
+
+    <style>
+        :root {
+            --primary: #89E900;
+            --secondary: #89E900;
+            --bg-white: #000000;
+            --bg-gray: #050505;
+            --text-main: #89E900;
+            --text-muted: #94a3b8;
+            --border: #1a1a1a;
+            --card-shadow: 0 10px 30px -10px rgba(137, 233, 0, 0.1);
+            --ease: cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .logo,
+        .nav-links a,
+        .cta-btn,
+        .hero-tag,
+        .tag {
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg-white);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.8;
+            font-size: 1rem;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        /* ── BRICK SCROLL SYSTEM ── */
+        .brick {
+            opacity: 0;
+            transform: translateY(40px) scale(0.97);
+            transition: opacity 0.65s var(--ease), transform 0.65s var(--ease), box-shadow 0.3s;
+            will-change: opacity, transform;
+            transform-style: preserve-3d;
+        }
+
+        .brick.brick-left {
+            transform: translateX(-50px) scale(0.97);
+        }
+
+        .brick.brick-right {
+            transform: translateX(50px) scale(0.97);
+        }
+
+        .brick.brick-scale {
+            transform: scale(0.88);
+        }
+
+        .brick.visible {
+            opacity: 1;
+            transform: translateY(0) translateX(0) scale(1);
+        }
+
+        /* ── HERO TEXT REVEAL ── */
+        .reveal-container {
+            overflow: hidden;
+            display: block;
+        }
+
+        .reveal-up {
+            display: inline-block;
+            transform: translateY(120%) skewY(6deg);
+            filter: blur(12px);
+            opacity: 0;
+            transition: transform 1.8s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 1.8s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 1.5s ease-out;
+            will-change: transform, filter, opacity;
+        }
+
+        .visible .reveal-up {
+            transform: translateY(0) skewY(0);
+            filter: blur(0);
+            opacity: 1;
+        }
+
+        /* staggered children */
+        .brick-group>* {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.55s var(--ease), transform 0.55s var(--ease);
+            will-change: opacity, transform;
+        }
+
+        .brick-group.visible>*:nth-child(1) {
+            opacity: 1;
+            transform: none;
+            transition-delay: .05s;
+        }
+
+        .brick-group.visible>*:nth-child(2) {
+            opacity: 1;
+            transform: none;
+            transition-delay: .15s;
+        }
+
+        .brick-group.visible>*:nth-child(3) {
+            opacity: 1;
+            transform: none;
+            transition-delay: .25s;
+        }
+
+        .brick-group.visible>*:nth-child(4) {
+            opacity: 1;
+            transform: none;
+            transition-delay: .35s;
+        }
+
+        .brick-group.visible>*:nth-child(5) {
+            opacity: 1;
+            transform: none;
+            transition-delay: .45s;
+        }
+
+        .brick-group.visible>*:nth-child(6) {
+            opacity: 1;
+            transform: none;
+            transition-delay: .55s;
+        }
+
+        .brick-group.visible>*:nth-child(7) {
+            opacity: 1;
+            transform: none;
+            transition-delay: .65s;
+        }
+
+        .brick-group.visible>*:nth-child(8) {
+            opacity: 1;
+            transform: none;
+            transition-delay: .75s;
+        }
+
+        .brick-group.visible>*:nth-child(9) {
+            opacity: 1;
+            transform: none;
+            transition-delay: .85s;
+        }
+
+        /* ── BACKGROUND DOT GRID ── */
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle at 2px 2px, rgba(137, 233, 0, 0.05) 1px, transparent 0);
+            background-size: 45px 45px;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        .video-bg-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -5;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .video-bg-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.4;
+        }
+
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
+            z-index: -4;
+            pointer-events: none;
+        }
+
+        /* ── NAVBAR ── */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 70px;
+            padding: 0 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+            transition: all 0.35s var(--ease);
+        }
+
+        nav.scrolled {
+            height: 65px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: transform 0.3s var(--ease);
+            animation: textGlowPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes textGlowPulse {
+
+            0%,
+            100% {
+                text-shadow: 0 0 0px transparent;
+            }
+
+            50% {
+                text-shadow: 0 0 10px rgba(137, 233, 0, 0.4);
+            }
+        }
+
+        .logo:hover {
+            transform: scale(1.02);
+        }
+
+        .logo img {
+            height: 1.8rem;
+            width: auto;
+            filter: drop-shadow(0 0 2px rgba(137, 233, 0, 0.3));
+            animation: logoPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes logoPulse {
+
+            0%,
+            100% {
+                filter: drop-shadow(0 0 2px rgba(79, 70, 229, 0.3));
+                transform: scale(1);
+            }
+
+            50% {
+                filter: drop-shadow(0 0 15px rgba(137, 233, 0, 0.6));
+                transform: scale(1.08);
+            }
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 16px !important;
+            position: relative;
+            padding: 0.4rem 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s var(--ease);
+        }
+
+        .nav-links a i {
+            color: var(--text-main);
+            opacity: 0.7;
+            transition: all 0.3s var(--ease);
+        }
+
+        .nav-links a:hover i {
+            opacity: 1;
+            color: var(--secondary);
+            transform: translateY(-1px);
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s var(--ease);
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-btn {
+            background: var(--primary);
+            color: #000;
+            padding: 0.8rem 1.6rem !important;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem !important;
+            border: 2px solid var(--secondary);
+            transition: background 0.3s, border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            white-space: nowrap;
+        }
+
+        .cta-btn:hover {
+            background: var(--secondary);
+            border-color: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px -5px rgba(137, 233, 0, 0.4);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+            padding: 0.4rem;
+        }
+
+        /* ── HERO ── */
+        header {
+            min-height: 65vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 70px 8% 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg-img {
+            display: none;
+        }
+
+        .hero-bg-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1.2rem;
+            background: #0a0a0a;
+            border-radius: 50px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border);
+        }
+
+        h1 {
+            font-size: clamp(2.4rem, 8vw, 5rem);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -0.04em;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #ffffff, #89E900, #ffffff);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textGradient 4s linear infinite;
+            filter: drop-shadow(0 0 15px rgba(137, 233, 0, 0.3));
+            display: inline-block;
+        }
+
+        @keyframes textGradient {
+            0% {
+                background-position: 0% center;
+            }
+
+            100% {
+                background-position: 200% center;
+            }
+        }
+
+        .hero-sub {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            color: #e2e8f0;
+            max-width: 680px;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            padding: 0.75rem 1.4rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 2px solid var(--border);
+            transition: border-color 0.3s, background 0.3s;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            background: var(--bg-gray);
+        }
+
+        /* ── SECTION COMMONS ── */
+        section {
+            padding: 7rem 8%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.8rem;
+            color: #ffffff;
+            background: linear-gradient(to bottom, #ffffff, #89E900);
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        .section-header p {
+            color: #cbd5e1;
+            max-width: 580px;
+            margin: 0 auto;
+            font-weight: 500;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 0.55rem 1rem !important;
+            background: #0a0a0a;
+            color: var(--secondary);
+            border-radius: 6px;
+            font-size: 0.8rem !important;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--secondary);
+            transition: all 0.3s var(--ease);
+            cursor: default;
+        }
+
+        .tag:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(137, 233, 0, 0.2);
+        }
+
+        /* ── ABOUT ── */
+        #about {
+            padding: 6rem 8%;
+        }
+
+        .about-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3.5rem;
+            align-items: center;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 32px;
+            padding: 3rem !important;
+            border: 1px solid var(--border);
+        }
+
+        .about-info {
+            flex: 1;
+            min-width: 260px;
+        }
+
+        .about-text {
+            flex: 1.5;
+            min-width: 260px;
+        }
+
+        .about-text p {
+            font-size: 17px !important;
+            line-height: 1.8 !important;
+            letter-spacing: 0.2px;
+            color: var(--text-muted);
+        }
+
+        /* ── LEADERSHIP ── */
+        .leadership-section {
+            padding: 7rem 8%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            justify-content: center;
+        }
+
+        .leader-card {
+            background: #050505;
+            border-radius: 24px;
+            padding: 3rem 2.2rem;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.3s;
+            box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.05);
+        }
+
+        .leader-card:hover {
+            transform: translateY(-12px);
+            border-color: var(--secondary);
+            box-shadow: 0 32px 64px -16px rgba(137, 233, 0, 0.15);
+        }
+
+        .leader-image-wrap {
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            overflow: hidden;
+            border: 5px solid #050505;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+            transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+            position: relative;
+        }
+
+        .leader-card:hover .leader-image-wrap {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 25px 50px -12px rgba(137, 233, 0, 0.25);
+        }
+
+        .leader-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ── COURSES ── */
+        .courses-section {
+            padding: 90px 6%;
+        }
+
+        .courses-container {
+            max-width: 1240px;
+            margin: 0 auto;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(240px, 1fr));
+            gap: 32px;
+            max-width: 1200px;
+            margin: 55px auto 0;
+        }
+
+        .course-card {
+            border-radius: 18px;
+            padding: 20px;
+            background: #050505;
+            border: 1px solid #1a1a1a;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+            transition: 0.3s ease;
+        }
+
+        .course-card:hover {
+            border-color: #89E900;
+            transform: translateY(-6px);
+        }
+
+        .course-card img {
+            width: 100%;
+            height: 135px;
+            object-fit: cover;
+            border-radius: 16px;
+        }
+
+        .course-card h3 {
+            margin-top: 18px;
+            font-size: 20px;
+            line-height: 1.4;
+        }
+
+        .course-card a {
+            display: inline-block;
+            margin-top: 18px;
+            font-size: 14px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        @media (max-width: 1024px) {
+            .courses-grid {
+                grid-template-columns: repeat(2, minmax(240px, 1fr));
+                gap: 28px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .courses-section {
+                padding: 60px 0;
+            }
+
+            .courses-section .section-header {
+                padding: 0 5%;
+            }
+
+            .courses-grid {
+                display: flex;
+                overflow-x: auto;
+                gap: 20px;
+                padding: 10px 5% 30px;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+            }
+
+            .course-card {
+                min-width: 260px;
+                scroll-snap-align: start;
+            }
+
+            .courses-grid::-webkit-scrollbar {
+                display: none;
+            }
+        }
+
+        .service-card {
+            background: rgba(5, 5, 5, 0.9);
+            backdrop-filter: blur(4px);
+            padding: 2.5rem 1.8rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: transform 0.45s var(--ease), box-shadow 0.45s var(--ease), border-color 0.3s;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(137, 233, 0, 0.03) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s;
+            z-index: -1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 32px 60px -16px rgba(0, 0, 0, 0.1);
+            border-color: var(--secondary);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .icon-box {
+            width: 54px;
+            height: 54px;
+            background: #111;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.3rem;
+            color: var(--secondary);
+            transition: background 0.4s, transform 0.4s;
+        }
+
+        .service-card:hover .icon-box {
+            background: var(--secondary);
+            color: #000;
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        /* ── STATS ── */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            background: rgba(5, 5, 5, 0.85);
+            backdrop-filter: blur(8px);
+            border-radius: 24px;
+            padding: 4rem 3rem;
+            text-align: center;
+            margin: 0 0 4rem 0;
+            border: 1px solid var(--border);
+        }
+
+        .stat-number {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 0.4rem;
+        }
+
+        /* ── APPS ── */
+        #apps {
+            background: #000;
+            color: var(--text-main);
+            border-radius: 36px;
+            margin: 0 0 5rem 0;
+            padding: 5rem;
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .apps-content {
+            flex: 1;
+        }
+
+        .apps-content h2 {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            margin-bottom: 1.2rem;
+            line-height: 1.1;
+        }
+
+        .apps-content p {
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+            max-width: 480px;
+        }
+
+        .apps-content ul {
+            list-style: none;
+            margin-bottom: 2.5rem;
+            color: #f8fafc;
+        }
+
+        .apps-content li {
+            margin-bottom: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            font-size: 1rem;
+        }
+
+        .apps-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        /* Phone mockups */
+        .mockup-phone {
+            width: 220px;
+            height: 460px;
+            background: #1e293b;
+            border-radius: 36px;
+            border: 8px solid #0f172a;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .mockup-phone-1 {
+            animation: floatPhone1 6s ease-in-out infinite;
+        }
+
+        .mockup-phone-2 {
+            animation: floatPhone2 7s ease-in-out infinite;
+            margin-top: 45px;
+        }
+
+        @keyframes floatPhone1 {
+
+            0%,
+            100% {
+                transform: translateY(-10px)
+            }
+
+            50% {
+                transform: translateY(-28px)
+            }
+        }
+
+        @keyframes floatPhone2 {
+
+            0%,
+            100% {
+                transform: translateY(20px)
+            }
+
+            50% {
+                transform: translateY(5px)
+            }
+        }
+
+        .island {
+            position: absolute;
+            top: 9px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30%;
+            height: 22px;
+            background: #0f172a;
+            border-radius: 16px;
+            z-index: 5;
+        }
+
+        .app-ui {
+            padding: 3rem 1.2rem 1.2rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+            background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+        }
+
+        .ui-card {
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 14px;
+            padding: 0.9rem;
+            display: flex;
+            gap: 0.8rem;
+            align-items: center;
+        }
+
+        .shimmer {
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.12) 50%, rgba(255, 255, 255, 0.05) 75%);
+            background-size: 200% 100%;
+            animation: shimmerAnim 2.2s infinite linear;
+            border-radius: 8px;
+        }
+
+        @keyframes shimmerAnim {
+            0% {
+                background-position: -200% 0
+            }
+
+            100% {
+                background-position: 200% 0
+            }
+        }
+
+        /* ── CONTACT ── */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-form {
+            background: #050505;
+            padding: 2.5rem;
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            box-shadow: var(--card-shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.3rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.45rem;
+            font-weight: 600;
+            font-size: 0.88rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: #000;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--secondary);
+            background: #050505;
+            color: var(--text-main);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            padding: 5rem 8% 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand p {
+            margin-top: 1.2rem;
+            color: var(--text-muted);
+            max-width: 280px;
+            font-size: 0.95rem;
+        }
+
+        .footer-links h5 {
+            font-size: 1rem;
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.7rem;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            transition: color 0.3s, padding-left 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-muted);
+            font-size: 0.88rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--bg-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            text-decoration: none;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .social-icon:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-4px);
+        }
+
+        /* ── POPUP ── */
+        .popup-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(8px);
+            z-index: 9999;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .popup-overlay.popup-active {
+            opacity: 1;
+            display: flex;
+        }
+
+        .popup-content {
+            background: #050505;
+            padding: 3rem;
+            border-radius: 28px;
+            max-width: 420px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.15);
+            border: 1px solid var(--border);
+            transform: scale(0.9) translateY(20px);
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .popup-active .popup-content {
+            transform: scale(1) translateY(0);
+        }
+
+        .success-icon {
+            width: 72px;
+            height: 72px;
+            background: rgba(34, 197, 94, 0.1);
+            color: #22C55E;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .popup-btn {
+            background: var(--primary);
+            color: white;
+            padding: 0.9rem 2rem;
+            border-radius: 12px;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .popup-btn:hover {
+            background: var(--secondary);
+            transform: scale(1.04);
+        }
+
+        /* ── MOBILE MENU ── */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 5%;
+            }
+
+            nav.scrolled {
+                padding: 0.8rem 5%;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: #000;
+                flex-direction: column;
+                padding: 1.5rem 5%;
+                gap: 1.2rem;
+                border-bottom: 1px solid var(--border);
+                box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                font-size: 1.05rem;
+            }
+
+            .cta-btn {
+                display: none;
+            }
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            #apps {
+                flex-direction: column;
+                padding: 3.5rem 2rem;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 2.5rem;
+            }
+
+            .stats {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 4.5rem 5%;
+            }
+
+            #about {
+                padding: 4rem 5%;
+            }
+
+            .about-wrapper {
+                padding: 2.5rem 1.5rem;
+                gap: 2rem;
+            }
+
+            .leadership-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .leader-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .contact-content {
+                gap: 2rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 0.8rem;
+                text-align: center;
+            }
+
+            .apps-visual {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .mockup-phone-2 {
+                margin-top: 0;
+            }
+
+            .stats {
+                grid-template-columns: 1fr 1fr;
+                padding: 2.5rem 1.5rem;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .hero-btns a {
+                width: 100%;
+                text-align: center;
+            }
+
+            #apps {
+                margin: 0 0 3rem 0;
+                border-radius: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .mockup-phone {
+                width: 185px;
+                height: 400px;
+            }
+        }
+
+        /* scroll to top */
+        .scroll-top {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            z-index: 900;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s, transform 0.3s, background 0.3s;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .scroll-top.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-top:hover {
+            background: var(--secondary);
+        }
+
+        /* ── CEO MESSAGE ── */
+        .ceo-section {
+            background: #000;
+            padding: 100px 8%;
+            color: var(--text-main);
+            overflow: hidden;
+            position: relative;
+            border-top: 1px solid var(--border);
+        }
+
+        .ceo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .ceo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .ceo-image-side {
+            position: relative;
+        }
+
+        .ceo-img-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            aspect-ratio: 4/5;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+        }
+
+        .ceo-img-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s var(--ease);
+        }
+
+        .ceo-img-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .ceo-grid-overlay {
+            display: none;
+        }
+
+        .ceo-tag {
+            display: inline-block;
+            background: rgba(57, 255, 20, 0.15);
+            color: var(--secondary);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+            border: 1px solid var(--secondary);
+        }
+
+        .ceo-quote {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-family: 'Orbitron', sans-serif;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .ceo-description {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .ceo-footer {
+            border-left: 3px solid var(--secondary);
+            padding-left: 1.5rem;
+        }
+
+        .ceo-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .ceo-title {
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+        }
+
+        .ceo-socials {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .ceo-socials a {
+            color: var(--text-main);
+            transition: color 0.3s;
+        }
+
+        .ceo-socials a:hover {
+            color: var(--secondary);
+        }
+
+        @media (max-width: 992px) {
+            .ceo-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .ceo-image-side {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .ceo-section {
+                padding: 70px 5%;
+            }
+        }
+
+        .ceo-grid.flipped .ceo-image-side {
+            order: 2;
+        }
+
+        .ceo-grid.flipped .ceo-content-side {
+            order: 1;
+        }
+
+        @media (max-width: 992px) {
+            .ceo-section {
+                padding: 70px 5%;
+            }
+        }
+
+        .rnd-animate-text {
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 3px;
+            background: linear-gradient(90deg, #000000 0%, #1e3a8a 50%, #000000 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: rndShine 5s linear infinite;
+            text-transform: uppercase;
+        }
+
+        @keyframes rndShine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        .partner-img {
+            transition: transform 0.8s var(--ease), box-shadow 0.8s var(--ease);
+            animation: floatPartners 6s ease-in-out infinite;
+            cursor: pointer;
+        }
+
+        @keyframes floatPartners {
+
+            0%,
+            100% {
+                transform: scale(1.1) translateY(0);
+            }
+
+            50% {
+                transform: scale(1.12) translateY(-10px);
+            }
+        }
+
+        .partner-img:hover {
+            transform: scale(1.18) translateY(-15px) !important;
+            animation-play-state: paused;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="video-bg-container">
+        <video autoplay muted loop playsinline id="bgVideo">
+            <source src="homescreenbackground.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="video-overlay"></div>
+    <div class="bg-pattern"></div>
+
+    <!-- Scroll to top -->
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+        <i data-lucide="chevron-up" size="20"></i>
+    </button>
+
+    <!-- NAVBAR -->
+    <nav id="navbar">
+        <a href="#" class="logo">
+            <img src="images/favicon.png" alt="Hacktura Hackers Academy Logo" onerror="this.style.display='none'">
+            Hacktura Hackers Academy
+        </a>
+        <button class="mobile-menu-btn" id="menu-toggle" aria-label="Toggle menu">
+            <i data-lucide="menu"></i>
+        </button>
+        <div class="nav-links" id="nav-links">
+            <a href="#"><i data-lucide="home" size="20"></i>Home</a>
+            <a href="#about"><i data-lucide="info" size="20"></i>About</a>
+            <a href="#courses"><i data-lucide="book-open" size="20"></i>Courses</a>
+            <a href="#rnd"><i data-lucide="flask-conical" size="20"></i>R&D</a>
+            <a href="#leadership"><i data-lucide="shield-check" size="20"></i>Leadership</a>
+            <a href="#team"><i data-lucide="users" size="20"></i>Team</a>
+            <a href="#contact"><i data-lucide="mail" size="20"></i>Contact</a>
+            <a href="#contact" class="cta-btn" style="display:none;" id="cta-mobile">Enroll Now</a>
+        </div>
+        <a href="#contact" class="cta-btn" id="cta-desktop">Enroll Now</a>
+    </nav>
+
+    <!-- HERO -->
+    <header>
+        <div class="hero-bg-img">
+            <img src="images/hero_tech.png" alt="" aria-hidden="true">
+        </div>
+        <div class="hero-tag brick">Initializing Access...</div>
+        <h1 class="brick" style="transition-delay:0.1s">
+            <span class="reveal-container">
+                <span class="reveal-up gradient-text"
+                    style="font-size:clamp(2.8rem, 10vw, 6.5rem); line-height:1.05; letter-spacing:-0.05em;">DEFEND.
+                    ATTACK.</span>
+            </span>
+            <span class="reveal-container">
+                <span class="reveal-up gradient-text"
+                    style="font-size:clamp(1.8rem, 6vw, 4.2rem); line-height:1.05; letter-spacing:-0.04em;">MASTER CYBER
+                    SECURITY.</span>
+            </span>
+        </h1>
+        <p class="hero-sub brick" style="transition-delay:0.4s">
+            <span class="reveal-container">
+                <span class="reveal-up"
+                    style="transition-delay: 0.5s; font-size:clamp(1.1rem, 2.8vw, 1.4rem); font-weight: 500;">Join the
+                    elite ranks of offensive and defensive security professionals.</span>
+            </span>
+            <br>
+            <span class="reveal-container">
+                <span class="reveal-up"
+                    style="transition-delay: 0.6s; font-size:clamp(1.1rem, 2.8vw, 1.4rem); opacity: 0.9;">Real-world
+                    labs, expert instruction, and a mission-first curriculum.</span>
+            </span>
+        </p>
+        <div class="hero-btns brick" style="transition-delay:0.3s">
+            <a href="#courses" class="cta-btn">Start Learning</a>
+            <a href="#contact" class="btn-secondary">Join Academy</a>
+        </div>
+    </header>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="about-wrapper">
+            <div class="about-info brick brick-left">
+                <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;">
+                    <div
+                        style="width:50px;height:50px;background:linear-gradient(135deg,var(--secondary),#818cf8);border-radius:14px;display:flex;justify-content:center;align-items:center;color:white;box-shadow:0 8px 20px rgba(79,70,229,0.2);">
+                        <i data-lucide="building-2" size="26"></i>
+                    </div>
+                    <div class="hero-tag" style="background:transparent;border:1px solid var(--border);margin:0;">About
+                        Hacktura Hackers Academy</div>
+                </div>
+                <h1 style="font-size:clamp(1.8rem,4vw,2.3rem);margin-bottom:1.2rem;color:var(--primary);">Hacktura
+                    Hackers Academy
+                    Kerala</h1>
+                <div style="width:56px;height:4px;background:var(--secondary);border-radius:2px;"></div>
+            </div>
+            <div class="about-text brick brick-right" style="transition-delay:0.15s">
+                <p>
+                    Hacktura Hackers Academy is a practical cybersecurity training academy focused on building skilled,
+                    responsible, and industry-ready cyber security professionals. We deliver hands-on learning programs
+                    designed to help students understand real-world cyber threats, ethical hacking techniques, defensive
+                    security practices, and modern digital protection strategies.
+                </p>
+                <p>
+                    Our mission is to bridge the cybersecurity skill gap by providing affordable, accessible, and
+                    practical training for students and aspiring IT professionals. At Hacktura, learning goes beyond
+                    theory. We focus on real-time labs, guided mentorship, security tools, attack and defense scenarios,
+                    and career-focused training that helps learners grow from beginners to confident cybersecurity
+                    professionals.
+                </p>
+                <p>
+                    Hacktura Hackers Academy offers structured cybersecurity courses including HCEA – Hacktura Certified
+                    Junior Ethical Hacker, CVET – Hacktura Certified Vulnerability Exploit Tester, HCRT – Hacktura
+                    Certified Red Team Specialist, and HCSP – Hacktura Certified Defensive Security Pro. These programs
+                    cover important domains such as ethical hacking, penetration testing, vulnerability assessment, red
+                    teaming, defensive security, incident response, network security, web application security, and
+                    cyber awareness.
+                </p>
+                <p>
+                    With a vision to empower the next generation of cyber defenders, Hacktura Hackers Academy is
+                    committed to creating a strong learning platform where students can develop real-world skills,
+                    understand ethical responsibilities, and prepare themselves for opportunities in the cybersecurity
+                    industry. Our goal is to make high-quality cyber security education practical, affordable, and
+                    impactful for students across Kerala and beyond.
+                </p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 4rem;" class="brick" style="transition-delay:0.3s">
+            <img src="images/global-partners.png" alt="Our Global Learning Partners" class="partner-img"
+                style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1); transform: scale(1.1);">
+        </div>
+    </section>
+
+
+
+    <!-- FOUNDER MESSAGE -->
+    <section class="ceo-section brick" style="border-top: none; background: #000;">
+        <div class="ceo-container">
+            <div class="ceo-grid flipped">
+                <div class="ceo-content-side">
+                    <div class="ceo-tag">Founder's Vision</div>
+                    <h2 class="ceo-quote">"Empowering the next generation of cyber defenders through practical mastery."
+                    </h2>
+                    <p class="ceo-description">
+                        "At Hacktura, we don't just teach tools; we build a defensive mindset. Our mission is to create
+                        a community of skilled professionals who are ready to protect the digital world with integrity,
+                        expertise, and real-world hands-on skills."
+                    </p>
+                    <div class="ceo-footer">
+                        <h4 class="ceo-name">Shibin KS</h4>
+                        <p class="ceo-title">Founder</p>
+                        <div class="ceo-socials">
+                            <a href="https://www.instagram.com/shiiiibeeee/" target="_blank"><i
+                                    data-lucide="instagram"></i></a>
+                            <a href="#"><i data-lucide="linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="ceo-image-side">
+                    <div class="ceo-img-card">
+                        <img src="images/imagesshibin_ks.png" alt="Shibin KS Founder Hacktura Hackers Academy"
+                            onerror="this.src='images/shibi.jpeg'">
+                        <div class="ceo-grid-overlay"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CO-FOUNDER MESSAGE -->
+    <section class="ceo-section brick" style="border-top: none;">
+        <div class="ceo-container">
+            <div class="ceo-grid">
+                <div class="ceo-image-side">
+                    <div class="ceo-img-card">
+                        <img src="images/imagesniranjan_sm.png" alt="Niranjan SM Co-Founder Hacktura Hackers Academy"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Niranjan+SM&background=0a0a0a&color=89E900'">
+                        <div class="ceo-grid-overlay"></div>
+                    </div>
+                </div>
+                <div class="ceo-content-side">
+                    <div class="ceo-tag">Co-Founder's Vision</div>
+                    <h2 class="ceo-quote">"Architecting security excellence for the next generation of defenders."</h2>
+                    <p class="ceo-description">
+                        "As co-architect of the curriculum, my focus is on ensuring every student masters the defensive
+                        and offensive tactics required in today's landscape. We identify vulnerabilities and teach the
+                        precision required to mitigate them effectively."
+                    </p>
+                    <div class="ceo-footer">
+                        <h4 class="ceo-name">Niranjan SM</h4>
+                        <p class="ceo-title">Co-Founder</p>
+                        <div class="ceo-socials">
+                            <a href="https://www.instagram.com/iam.niranjan__/" target="_blank"><i
+                                    data-lucide="instagram"></i></a>
+                            <a href="#"><i data-lucide="linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- OUR TEAM -->
+    <section id="team" style="padding: 5rem 8%;">
+        <div style="text-align:center;margin-bottom:4rem;">
+            <span class="tag brick">OUR EXPERTS</span>
+            <h2 class="brick" style="font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem;">Meet Our Team</h2>
+            <p class="brick" style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">The passionate
+                individuals working behind the scenes to provide the best learning experience and security research.</p>
+        </div>
+        <div class="leadership-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+            <div class="leader-card brick">
+                <div class="leader-image-wrap" style="width: 130px; height: 130px;">
+                    <img src="https://ui-avatars.com/api/?name=Team+Member&background=f1f5f9&color=4F46E5"
+                        alt="Team Member" class="leader-image">
+                </div>
+                <h3 style="font-size:1.5rem; font-weight:800; color:var(--primary);">Senior Mentor</h3>
+                <p
+                    style="color:#4F46E5;font-weight:700;margin-bottom:1rem;text-transform:uppercase;font-size:0.75rem;letter-spacing:1px;">
+                    Security Instructor</p>
+                <p style="color:var(--text-muted);font-size:0.9rem;">Expert in penetration testing and security
+                    operations with years of industry experience.</p>
+            </div>
+            <div class="leader-card brick" style="transition-delay: 0.1s;">
+                <div class="leader-image-wrap" style="width: 130px; height: 130px;">
+                    <img src="https://ui-avatars.com/api/?name=Team+Member&background=0a0a0a&color=89E900"
+                        alt="Team Member" class="leader-image">
+                </div>
+                <h3 style="font-size:1.5rem; font-weight:800; color:var(--primary);">Technical Support</h3>
+                <p
+                    style="color:#4F46E5;font-weight:700;margin-bottom:1rem;text-transform:uppercase;font-size:0.75rem;letter-spacing:1px;">
+                    Labs Coordinator</p>
+                <p style="color:var(--text-muted);font-size:0.9rem;">Ensuring 24/7 lab availability and providing
+                    technical assistance to all students.</p>
+            </div>
+            <div class="leader-card brick" style="transition-delay: 0.2s;">
+                <div class="leader-image-wrap" style="width: 130px; height: 130px;">
+                    <img src="https://ui-avatars.com/api/?name=Team+Member&background=0a0a0a&color=89E900"
+                        alt="Team Member" class="leader-image">
+                </div>
+                <h3 style="font-size:1.5rem; font-weight:800; color:var(--primary);">Career Advisor</h3>
+                <p
+                    style="color:#4F46E5;font-weight:700;margin-bottom:1rem;text-transform:uppercase;font-size:0.75rem;letter-spacing:1px;">
+                    Placement Cell</p>
+                <p style="color:var(--text-muted);font-size:0.9rem;">Helping students build professional resumes and
+                    connecting them with top hiring partners.</p>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <!-- COURSES -->
+    <section id="courses" class="courses-section">
+        <div class="courses-container">
+            <div class="section-header">
+                <span class="tag brick">ELITE PROGRAMS</span>
+                <h2 class="brick" style="transition-delay:0.1s">Professional Training Path</h2>
+                <p class="brick" style="transition-delay:0.2s">Comprehensive curricula designed by industry experts to
+                    take you from foundational knowledge to expert-level proficiency.</p>
+            </div>
+            <div class="courses-grid brick-group">
+                <div class="course-card brick">
+                    <img src="courses/HCEA.png" alt="HCEA Course">
+                    <h3>Junior Ethical Hacker (HCEA)</h3>
+                    <a href="courses.html"
+                        style="color:var(--primary); font-size:0.85rem; font-weight:700; text-decoration:none;">View
+                        Details →</a>
+                </div>
+                <div class="course-card brick" style="transition-delay: 0.1s;">
+                    <img src="courses/CVET.png" alt="CVET Course">
+                    <h3>Vulnerability Tester (CVET)</h3>
+                    <a href="courses.html"
+                        style="color:var(--primary); font-size:0.85rem; font-weight:700; text-decoration:none;">View
+                        Details →</a>
+                </div>
+                <div class="course-card brick" style="transition-delay: 0.2s;">
+                    <img src="courses/HCSP.png" alt="HCSP Course">
+                    <h3>Defensive Security Pro (HCSP)</h3>
+                    <a href="courses.html"
+                        style="color:var(--primary); font-size:0.85rem; font-weight:700; text-decoration:none;">View
+                        Details →</a>
+                </div>
+                <div class="course-card brick" style="transition-delay: 0.3s;">
+                    <img src="courses/HCRT.png" alt="HCRT Course">
+                    <h3>Red Team Specialist (HCRT)</h3>
+                    <a href="courses.html"
+                        style="color:var(--primary); font-size:0.85rem; font-weight:700; text-decoration:none;">View
+                        Details →</a>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem;" class="brick">
+                <a href="courses.html" class="cta-btn" style="display: inline-block;">View All Courses</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESEARCH & DEVELOPMENT -->
+    <section id="rnd"
+        style="padding: 80px 8%; background: #000; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+        <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+            <span class="tag brick">INNOVATION HUB</span>
+            <h2 class="brick rnd-animate-text"
+                style="font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 800; margin-bottom: 1.5rem; letter-spacing: -0.5px;">
+                HACKTURA RESEARCH & DEVELOPMENT</h2>
+            <div
+                style="width: 60px; height: 4px; background: var(--secondary); margin: 0 auto 2rem; border-radius: 2px;">
+            </div>
+            <p class="brick" style="color: var(--text-main); font-size: 1.1rem; line-height: 1.8; font-weight: 500;">
+                Hacktura R&D is the research and innovation division of Hacktura, focused on developing advanced
+                cybersecurity technologies through experimentation, hardware-software integration, and real-world
+                security research. Our work explores new defensive strategies, security tools, and system architectures
+                designed to strengthen the resilience of modern digital infrastructure.
+            </p>
+        </div>
+    </section>
+
+    <!-- R&D FOUNDER MESSAGE -->
+    <section class="ceo-section brick" style="border-top: none; background: #000;">
+        <div class="ceo-container">
+            <div class="ceo-grid">
+                <div class="ceo-image-side">
+                    <div class="ceo-img-card"
+                        style="border-color: #1e3a8a; box-shadow: 0 0 40px rgba(30, 58, 138, 0.1);">
+                        <img src="images/imagesnavaneeth.png" alt="Navaneeth Chandran Founder & CEO Hacktura R&D"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Navaneeth+Chandran&background=f1f5f9&color=1e3a8a'">
+                        <div class="ceo-grid-overlay"
+                            style="background-image: linear-gradient(rgba(30, 58, 138, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(30, 58, 138, 0.1) 1px, transparent 1px);">
+                        </div>
+                    </div>
+                </div>
+                <div class="ceo-content-side">
+                    <div class="ceo-tag"
+                        style="background: rgba(30, 58, 138, 0.1); color: #1e3a8a; border-color: #1e3a8a;">Founder's
+                        Vision</div>
+                    <h2 class="ceo-quote" style="color: #fff;">"My vision is to build a research-driven cybersecurity
+                        ecosystem where innovation, experimentation, and ethical responsibility shape the defenders of
+                        tomorrow."</h2>
+                    <p class="ceo-description">
+                        "Hacktura R&D exists to transform curiosity into capability — empowering individuals to design
+                        security solutions, develop defensive technologies, and protect the digital world through
+                        practical expertise."
+                    </p>
+                    <div class="ceo-footer" style="border-left-color: #1e3a8a;">
+                        <h4 class="ceo-name">Navaneeth Chandran</h4>
+                        <p class="ceo-title" style="color: #1e3a8a;">Founder & CEO, HACKTURA RESEARCH & DEVELOPMENT</p>
+                        <div class="ceo-socials">
+                            <a href="#" style="color: var(--text-main);"><i data-lucide="linkedin"></i></a>
+                            <a href="#" style="color: var(--text-main);"><i data-lucide="instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="contact-content">
+            <div class="contact-info brick brick-left">
+                <div class="hero-tag">Contact Us</div>
+                <h2>Let's build something<br><span
+                        style="background:linear-gradient(90deg,var(--primary) 0%,#4F46E5 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">extraordinary.</span>
+                </h2>
+                <p style="color:var(--text-muted);font-size:1.05rem;margin-top:1.2rem;">Ready to take your business to
+                    the next level? Our team of experts is here to help you design, develop, and scale your digital
+                    presence.</p>
+                <div style="margin-top:2.5rem;display:flex;flex-direction:column;gap:1.5rem;">
+                    <div>
+                        <p style="font-weight:700;color:var(--text-muted);margin-bottom:0.2rem;font-size:0.88rem;">Email
+                            us at</p>
+                        <a href="mailto:hackturaacademy@gmail.com"
+                            style="font-size:1.3rem;color:var(--secondary);text-decoration:none;font-weight:700;display:flex;align-items:center;gap:0.7rem;">
+                            <i data-lucide="mail" size="22"></i> hackturaacademy@gmail.com
+                        </a>
+                    </div>
+                    <div>
+                        <p style="font-weight:700;color:var(--text-muted);margin-bottom:0.2rem;font-size:0.88rem;">Call
+                            or WhatsApp us</p>
+                        <a href="https://wa.me/918138030292" target="_blank" rel="noopener noreferrer"
+                            style="font-size:1.3rem;color:var(--secondary);text-decoration:none;font-weight:700;display:flex;align-items:center;gap:0.7rem;">
+                            <i data-lucide="phone" size="22"></i> +91 81380 30292
+                        </a>
+                    </div>
+                    <div>
+                        <p style="font-weight:700;color:var(--text-muted);margin-bottom:0.2rem;font-size:0.88rem;">
+                            Follow our growth</p>
+                        <a href="https://www.instagram.com/hackturaacademy___?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                            target="_blank" rel="noopener noreferrer"
+                            style="font-size:1.3rem;color:var(--secondary);text-decoration:none;font-weight:700;display:flex;align-items:center;gap:0.7rem;">
+                            <i data-lucide="instagram" size="22"></i> @hackturaacademy___
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <form id="contact-form" class="contact-form brick brick-right" style="transition-delay:0.15s"
+                action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfFgDuRgEpITpBYobDmOZY6aMgV5kBzJBGimNKw3_U6ZJRPtw/formResponse"
+                method="POST" target="hidden_iframe" onsubmit="showSuccessPopup()">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" name="entry.219246431" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" name="entry.1510878369" placeholder="john@example.com" required>
+                </div>
+                <div class="form-group" style="position:relative;">
+                    <label>Course Interest</label>
+                    <select name="entry.1668452001" required>
+                        <option value="" disabled selected>Select a course...</option>
+                        <option>Junior Ethical Hacker (HCEA)</option>
+                        <option>Vulnerability Tester (CVET)</option>
+                        <option>Red Team Specialist (HCRT)</option>
+                        <option>Defensive Security Pro (HCSP)</option>
+                        <option>Other Inquiry</option>
+                    </select>
+                    <i data-lucide="chevron-down" size="16"
+                        style="position:absolute;right:1rem;top:2.6rem;color:var(--text-muted);pointer-events:none;"></i>
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea name="entry.1030465799" rows="4" placeholder="Tell us about your project..."
+                        required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+
+            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+            <div id="successPopup" class="popup-overlay">
+                <div class="popup-content">
+                    <div class="success-icon"><i data-lucide="check-circle" size="44"></i></div>
+                    <h5 style="font-size:1.7rem;margin-bottom:0.5rem;">Inquiry Received!</h5>
+                    <p style="color:var(--text-muted);">Thank you for choosing Hacktura Hackers Academy. Our specialists
+                        will
+                        review your request and get back to you within 24 hours.</p>
+                    <button onclick="closePopup()" class="popup-btn">Return to Site</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+        <div class="footer-grid">
+            <div class="footer-brand brick">
+                <a href="#" class="logo">
+                    <img src="images/Hacktura Hackers Academy-logo.png" alt="Hacktura Hackers Academy Logo"
+                        onerror="this.style.display='none'">
+                    Hacktura Hackers Academy
+                </a>
+                <p>Empowering the next generation of cybersecurity professionals with practical, hands-on training and
+                    expert mentorship.</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/hackturaacademy___?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                        class="social-icon" target="_blank" rel="noopener noreferrer"><i data-lucide="instagram"
+                            size="16"></i></a>
+                    <a href="#" class="social-icon"><i data-lucide="twitter" size="16"></i></a>
+                    <a href="#" class="social-icon"><i data-lucide="linkedin" size="16"></i></a>
+                    <a href="#" class="social-icon"><i data-lucide="github" size="16"></i></a>
+                </div>
+            </div>
+            <div class="footer-links brick" style="transition-delay:0.1s">
+                <h5>Quick Links</h5>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#courses">Our Courses</a></li>
+                    <li><a href="#leadership">Leadership</a></li>
+                    <li><a href="#team">Our Team</a></li>
+                    <li><a href="#contact">Enroll Now</a></li>
+                </ul>
+            </div>
+            <div class="footer-links brick" style="transition-delay:0.2s">
+                <h5>Company</h5>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Our Process</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links brick" style="transition-delay:0.3s">
+                <h5>Legal</h5>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Hacktura Hackers Academy. All Rights Reserved.</p>
+            <p>Designed with <i data-lucide="heart" size="13"
+                    style="fill:#ff4d4d;color:#ff4d4d;vertical-align:middle;"></i> for the Future.</p>
+        </div>
+    </footer>
+
+    <script>
+        /* ── LUCIDE ICONS ── */
+        lucide.createIcons();
+
+        /* ── NAVBAR SCROLL ── */
+        const navbar = document.getElementById('navbar');
+        const scrollTopBtn = document.getElementById('scrollTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+                scrollTopBtn.classList.add('show');
+            } else {
+                navbar.classList.remove('scrolled');
+                scrollTopBtn.classList.remove('show');
+            }
+        }, { passive: true });
+
+        scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        /* ── MOBILE MENU ── */
+        const menuToggle = document.getElementById('menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+        const ctaMobile = document.getElementById('cta-mobile');
+
+        menuToggle.addEventListener('click', () => {
+            const open = navLinks.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            icon.setAttribute('data-lucide', open ? 'x' : 'menu');
+            ctaMobile.style.display = open ? 'block' : 'none';
+            lucide.createIcons();
+        });
+
+        navLinks.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                ctaMobile.style.display = 'none';
+                const icon = menuToggle.querySelector('i');
+                icon.setAttribute('data-lucide', 'menu');
+                lucide.createIcons();
+            });
+        });
+
+        /* ── BRICK SCROLL OBSERVER (IntersectionObserver — GPU-composited, no jank) ── */
+        const brickObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                } else {
+                    entry.target.classList.remove('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -20px 0px'
+        });
+
+        document.querySelectorAll('.brick, .brick-group').forEach(el => {
+            brickObserver.observe(el);
+        });
+
+        /* ── TRIGGER HERO BRICKS IMMEDIATELY (they're in viewport on load) ── */
+        setTimeout(() => {
+            document.querySelectorAll('header .brick').forEach((el, i) => {
+                setTimeout(() => el.classList.add('visible'), i * 120);
+            });
+        }, 100);
+
+        /* ── POPUP ── */
+        function showSuccessPopup() {
+            const popup = document.getElementById('successPopup');
+            popup.style.display = 'flex';
+            setTimeout(() => popup.classList.add('popup-active'), 10);
+            setTimeout(() => document.getElementById('contact-form').reset(), 500);
+        }
+
+        function closePopup() {
+            const popup = document.getElementById('successPopup');
+            popup.classList.remove('popup-active');
+            setTimeout(() => { popup.style.display = 'none'; }, 400);
+        }
+
+        /* ── TOUCH RIPPLE (native feel) ── */
+        document.querySelectorAll('.service-card, .leader-card').forEach(card => {
+            card.addEventListener('touchstart', () => {
+                card.style.transform = 'scale(0.97)';
+            }, { passive: true });
+            card.addEventListener('touchend', () => {
+                card.style.transform = '';
+            }, { passive: true });
+        });
+
+        /* ── 3D HOVER TILT EFFECT ── */
+        function applyTilt(elements) {
+            elements.forEach(el => {
+                el.addEventListener('mousemove', (e) => {
+                    const rect = el.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = (y - centerY) / 20;
+                    const rotateY = (centerX - x) / 20;
+
+                    el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+                });
+
+                el.addEventListener('mouseleave', () => {
+                    el.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+                });
+            });
+        }
+
+        applyTilt(document.querySelectorAll('.service-card'));
+    </script>
+</body>
+
+</html>
