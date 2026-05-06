@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Courses | Hacktura Hackers Academy</title>
+    <meta name="description"
+        content="Explore our elite cybersecurity training programs. From foundations to advanced red team operations.">
+
+    <link rel="icon" type="image/png" href="shield.png">
+    <link rel="apple-touch-icon" href="shield.png">
+    <meta name="theme-color" content="#4F46E5">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Extended" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #89E900;
+            --secondary: #89E900;
+            --bg-white: #000000;
+            --bg-gray: #050505;
+            --text-main: #89E900;
+            --text-muted: #94a3b8;
+            --border: #1a1a1a;
+            --card-shadow: 0 10px 30px -10px rgba(137, 233, 0, 0.1);
+            --ease: cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .logo,
+        .nav-links a,
+        .cta-btn,
+        .hero-tag,
+        .tag {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg-white);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.8;
+            font-size: 1rem;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        /* ── BRICK SCROLL SYSTEM ── */
+        .brick {
+            opacity: 0;
+            transform: translateY(40px) scale(0.97);
+            transition: opacity 0.65s var(--ease), transform 0.65s var(--ease), box-shadow 0.3s;
+            will-change: opacity, transform;
+        }
+
+        .brick.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .brick-group>* {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.55s var(--ease), transform 0.55s var(--ease);
+            will-change: opacity, transform;
+        }
+
+        .brick-group.visible>*:nth-child(1) { opacity: 1; transform: none; transition-delay: .05s; }
+        .brick-group.visible>*:nth-child(2) { opacity: 1; transform: none; transition-delay: .15s; }
+        .brick-group.visible>*:nth-child(3) { opacity: 1; transform: none; transition-delay: .25s; }
+        .brick-group.visible>*:nth-child(4) { opacity: 1; transform: none; transition-delay: .35s; }
+
+        /* ── BACKGROUND DOT GRID ── */
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle at 2px 2px, rgba(137, 233, 0, 0.05) 1px, transparent 0);
+            background-size: 45px 45px;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        /* ── NAVBAR ── */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 70px;
+            padding: 0 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+            transition: all 0.35s var(--ease);
+        }
+
+        nav.scrolled {
+            height: 65px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 16px !important;
+            position: relative;
+            padding: 0.4rem 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s var(--ease);
+        }
+
+        .nav-links a i {
+            color: var(--text-main);
+            opacity: 0.7;
+            transition: all 0.3s var(--ease);
+        }
+
+        .nav-links a:hover i {
+            opacity: 1;
+            color: var(--secondary);
+            transform: translateY(-1px);
+        }
+
+        .nav-links a:hover { color: var(--secondary); }
+
+        .cta-btn {
+            background: var(--primary);
+            color: #000;
+            padding: 0.8rem 1.6rem !important;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem !important;
+            border: 2px solid var(--secondary);
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .cta-btn:hover {
+            background: var(--secondary);
+            border-color: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px -5px rgba(137, 233, 0, 0.4);
+        }
+
+        /* ── COURSES HERO ── */
+        .page-header {
+            padding: 70px 8% 50px;
+            text-align: center;
+            background: linear-gradient(180deg, #050505 0%, #000000 100%);
+        }
+
+        .hero-tag {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            background: #0a0a0a;
+            border-radius: 50px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border);
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.04em;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #ffffff, #89E900, #ffffff);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textGradient 4s linear infinite;
+        }
+        
+        @keyframes textGradient {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        /* ── COURSE GRID ── */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            padding: 4rem 8% 8rem;
+        }
+
+        .course-card {
+            transition: all 0.4s var(--ease);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .course-image {
+            width: 100%;
+            aspect-ratio: 16/10;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            background: #050505;
+            border: 1px solid var(--border);
+        }
+
+        .course-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s var(--ease);
+        }
+
+        .course-card:hover .course-image img {
+            transform: scale(1.05);
+        }
+
+        .course-badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: rgba(137, 233, 0, 0.08);
+            color: var(--secondary);
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .course-card h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 0.8rem;
+            letter-spacing: -0.5px;
+            color: #ffffff;
+        }
+
+        .course-card p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .course-duration {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .view-btn {
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        /* ── MODAL ── */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            display: flex;
+        }
+
+        .modal-content {
+            background: #050505;
+            border-radius: 32px;
+            width: 95%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: scale(0.9) translateY(20px);
+            transition: all 0.5s var(--ease);
+            box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #111;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            color: var(--secondary);
+        }
+
+        .modal-body {
+            padding: 3rem;
+        }
+
+        .modal-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 3rem;
+        }
+
+        .modal-image {
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            height: fit-content;
+        }
+
+        .modal-info h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .learning-list {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .learning-list li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .learning-list i {
+            color: var(--secondary);
+            flex-shrink: 0;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            padding: 5rem 8% 2rem;
+            border-top: 1px solid var(--border);
+            background: #000;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-muted);
+            font-size: 0.88rem;
+        }
+
+        @media (max-width: 1024px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .modal-grid { grid-template-columns: 1fr; gap: 2rem; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .page-header { padding: 10rem 5% 4rem; }
+            .courses-grid { padding: 2rem 5% 4rem; }
+            .modal-body { padding: 1.5rem; }
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ── DIFFERENT SECTION ── */
+        .different-section {
+            padding: 4rem 8%;
+            background: #000;
+            backdrop-filter: blur(8px);
+        }
+
+        .different-card {
+            background: #050505;
+            padding: 4rem;
+            border-radius: 32px;
+            border: 1px solid var(--border);
+            max-width: 1100px;
+            margin: 0 auto;
+            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.05);
+        }
+
+        .different-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .feature-icon {
+            width: 44px;
+            height: 44px;
+            background: #111;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            flex-shrink: 0;
+            transition: all 0.3s;
+        }
+
+        .feature-item:hover .feature-icon {
+            background: var(--secondary);
+            color: #000;
+            transform: scale(1.1);
+        }
+
+        .feature-text h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+        }
+
+        .feature-text p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .different-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .different-card { padding: 2rem; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bg-pattern"></div>
+
+    <!-- NAVBAR -->
+    <nav id="navbar">
+        <a href="index.html" class="logo">
+            <img src="images/favicon.png" alt="Hacktura Hackers Academy Logo" style="height: 1.8rem; width: auto;" onerror="this.style.display='none'">
+            Hacktura Hackers Academy
+        </a>
+        <div class="nav-links">
+            <a href="index.html"><i data-lucide="home" size="20"></i>Home</a>
+            <a href="index.html#about"><i data-lucide="info" size="20"></i>About</a>
+            <a href="courses.html" style="color: var(--secondary); font-weight: 700;"><i data-lucide="book-open" size="20"></i>Courses</a>
+            <a href="index.html#leadership"><i data-lucide="shield-check" size="20"></i>Leadership</a>
+            <a href="index.html#team"><i data-lucide="users" size="20"></i>Team</a>
+            <a href="index.html#contact"><i data-lucide="mail" size="20"></i>Contact</a>
+        </div>
+        <a href="index.html#contact" class="cta-btn">Enroll Now</a>
+    </nav>
+
+    <!-- HERO -->
+    <header class="page-header">
+        <div class="hero-tag brick">Operational Training</div>
+        <h1 class="brick" style="transition-delay: 0.1s; font-size: clamp(2.8rem, 10vw, 5.5rem); line-height: 1.05; letter-spacing: -0.05em;">
+            DEFEND. <span class="gradient-text">ATTACK.</span>
+        </h1>
+        </p>
+    </header>
+
+    <!-- DIFFERENT SECTION -->
+    <section class="different-section" style="background: transparent; border: none; backdrop-filter: none;">
+        <div class="brick" style="max-width: 1100px; margin: 0 auto; display: flex; gap: 4rem; align-items: center; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 320px;">
+                <div style="margin-bottom: 3rem;">
+                    <span class="tag" style="margin-bottom: 1.5rem;">OUR UNIQUE APPROACH</span>
+                    <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 1.5rem; letter-spacing: -1px; line-height: 1.1;">
+                        What Makes Hacktura Courses Different?
+                    </h2>
+                    <p style="color: var(--text-muted); line-height: 1.8; font-size: 1.05rem;">
+                        Hacktura Hackers Academy focuses on practical cybersecurity education that prepares students for real-world challenges. Our courses combine expert mentorship, hands-on labs, ethical hacking concepts, career-focused training, and 24/7 student support to help learners grow from beginners to confident cybersecurity professionals.
+                    </p>
+                </div>
+
+                <div class="different-grid" style="margin-top: 0; gap: 2rem;">
+                    <div class="feature-item">
+                        <div class="feature-icon"><i data-lucide="shield-check" size="24"></i></div>
+                        <div class="feature-text">
+                            <h4>Practical Labs</h4>
+                            <p>Practical Ethical Hacking Labs and Guided Training to build real-world skills.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i data-lucide="zap" size="24"></i></div>
+                        <div class="feature-text">
+                            <h4>Real-World Scenarios</h4>
+                            <p>Real-World Cybersecurity Scenarios and Security Challenges for immersive learning.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i data-lucide="map" size="24"></i></div>
+                        <div class="feature-text">
+                            <h4>Career Roadmap</h4>
+                            <p>Career-Focused Roadmap with Expert Mentorship to guide your professional journey.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i data-lucide="headset" size="24"></i></div>
+                        <div class="feature-text">
+                            <h4>24/7 Support</h4>
+                            <p>24/7 Student Support and Continuous Learning Assistance whenever you need it.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="flex: 1; min-width: 320px; display: flex; justify-content: center;">
+                <div style="position: relative; border-radius: 24px; overflow: hidden; box-shadow: 0 30px 60px -15px rgba(137, 233, 0, 0.3); border: 1px solid var(--border); transition: transform 0.4s var(--ease);" onmouseover="this.style.transform='scale(1.02) rotate(-1deg)'" onmouseout="this.style.transform='scale(1) rotate(0deg)'">
+                    <img src="images/approach.jpg.png" alt="Our Unique Approach" style="width: 100%; max-width: 500px; height: auto; display: block; object-fit: cover;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COURSE GRID -->
+    <section class="courses-grid brick-group visible">
+        <!-- HCEA -->
+        <div class="course-card" onclick="openModal('HCEA')">
+            <div class="course-image">
+                <img src="courses/HCEA.png" alt="HCEA Course">
+            </div>
+            <span class="course-badge">Foundation</span>
+            <h3>Junior Ethical Hacker</h3>
+            <p>Understand how computers, networks, and security systems work. Perfect for beginners starting their journey.</p>
+            <div class="course-meta">
+                <span class="course-duration"><i data-lucide="clock" size="16"></i> 1 Month</span>
+                <span class="view-btn">View Details <i data-lucide="arrow-right" size="16"></i></span>
+            </div>
+        </div>
+
+        <!-- CVET -->
+        <div class="course-card" onclick="openModal('CVET')">
+            <div class="course-image">
+                <img src="courses/CVET.png" alt="CVET Course">
+            </div>
+            <span class="course-badge">Offensive</span>
+            <h3>Vulnerability Tester</h3>
+            <p>Master real-world hacking techniques, vulnerability assessment, and exploitation methodologies.</p>
+            <div class="course-meta">
+                <span class="course-duration"><i data-lucide="clock" size="16"></i> 3 Months</span>
+                <span class="view-btn">View Details <i data-lucide="arrow-right" size="16"></i></span>
+            </div>
+        </div>
+
+        <!-- HCRT -->
+        <div class="course-card" onclick="openModal('HCRT')">
+            <div class="course-image">
+                <img src="courses/HCRT.png" alt="HCRT Course">
+            </div>
+            <span class="course-badge">Elite Red Team</span>
+            <h3>Red Team Specialist</h3>
+            <p>Elite adversary simulation. Learn to breach enterprise environments and maintain stealthy persistence.</p>
+            <div class="course-meta">
+                <span class="course-duration"><i data-lucide="clock" size="16"></i> 5 Months</span>
+                <span class="view-btn">View Details <i data-lucide="arrow-right" size="16"></i></span>
+            </div>
+        </div>
+
+        <!-- HCSP -->
+        <div class="course-card" onclick="openModal('HCSP')">
+            <div class="course-image">
+                <img src="courses/HCSP.png" alt="HCSP Course">
+            </div>
+            <span class="course-badge">Blue Team</span>
+            <h3>Defensive Security Pro</h3>
+            <p>Specialized defensive program. Learn to protect organizations by monitoring traffic and detecting intrusions.</p>
+            <div class="course-meta">
+                <span class="course-duration"><i data-lucide="clock" size="16"></i> 6 Months</span>
+                <span class="view-btn">View Details <i data-lucide="arrow-right" size="16"></i></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL -->
+    <div id="courseModal" class="modal-overlay" onclick="closeModal(event)">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal(event)"><i data-lucide="x" size="20"></i></button>
+            <div class="modal-body" id="modalBody">
+                <!-- Dynamic Content -->
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+        <div class="footer-grid">
+            <div class="footer-brand brick">
+                <a href="#" class="logo">
+                    <img src="images/Hacktura Hackers Academy-logo.png" alt="Hacktura Hackers Academy Logo" onerror="this.style.display='none'">
+                    Hacktura Hackers Academy
+                </a>
+                <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.9rem;">
+                    Empowering the next generation of cybersecurity professionals with practical, hands-on training and expert mentorship.
+                </p>
+                <div class="social-links" style="margin-top: 1.5rem; display: flex; gap: 1rem;">
+                    <a href="https://www.instagram.com/hackturaacademy___?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-icon" target="_blank" rel="noopener noreferrer" style="color: var(--text-muted);"><i data-lucide="instagram" size="18"></i></a>
+                    <a href="#" class="social-icon" style="color: var(--text-muted);"><i data-lucide="twitter" size="18"></i></a>
+                    <a href="#" class="social-icon" style="color: var(--text-muted);"><i data-lucide="linkedin" size="18"></i></a>
+                    <a href="#" class="social-icon" style="color: var(--text-muted);"><i data-lucide="github" size="18"></i></a>
+                </div>
+            </div>
+            <div class="footer-links brick" style="transition-delay:0.1s">
+                <h5 style="margin-bottom: 1.2rem;">Quick Links</h5>
+                <ul style="list-style: none; color: var(--text-muted); font-size: 0.9rem;">
+                    <li style="margin-bottom: 0.5rem;"><a href="index.html#about" style="text-decoration: none; color: inherit;">About Us</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="courses.html" style="text-decoration: none; color: inherit;">Our Courses</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="index.html#leadership" style="text-decoration: none; color: inherit;">Leadership</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="index.html#team" style="text-decoration: none; color: inherit;">Our Team</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="index.html#contact" style="text-decoration: none; color: inherit;">Enroll Now</a></li>
+                </ul>
+            </div>
+            <div class="footer-links brick" style="transition-delay:0.2s">
+                <h5 style="margin-bottom: 1.2rem;">Company</h5>
+                <ul style="list-style: none; color: var(--text-muted); font-size: 0.9rem;">
+                    <li style="margin-bottom: 0.5rem;"><a href="index.html#about" style="text-decoration: none; color: inherit;">About Us</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="#" style="text-decoration: none; color: inherit;">Careers</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="#" style="text-decoration: none; color: inherit;">Our Process</a></li>
+                    <li><a href="index.html#contact" style="text-decoration: none; color: inherit;">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links brick" style="transition-delay:0.3s">
+                <h5 style="margin-bottom: 1.2rem;">Legal</h5>
+                <ul style="list-style: none; color: var(--text-muted); font-size: 0.9rem;">
+                    <li style="margin-bottom: 0.5rem;"><a href="#" style="text-decoration: none; color: inherit;">Privacy Policy</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="#" style="text-decoration: none; color: inherit;">Terms of Service</a></li>
+                    <li><a href="#" style="text-decoration: none; color: inherit;">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Hacktura Hackers Academy. All Rights Reserved.</p>
+            <p>Designed with <i data-lucide="heart" size="13" style="fill:#ff4d4d;color:#ff4d4d;vertical-align:middle;"></i> for the Future.</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        const courseData = {
+            'HCEA': {
+                title: 'Junior Ethical Hacker (HCEA)',
+                badge: 'Foundation',
+                duration: '1 Month',
+                image: 'courses/HCEA.png',
+                about: 'Hacktura Certified Junior Ethical Hacker is a beginner-friendly cybersecurity foundation course designed for students who want to start their journey in ethical hacking. Understand how computers, networks, and security systems work.',
+                learning: [
+                    'Networking Basics: IP, DNS, Ports',
+                    'Linux Terminal & Commands',
+                    'System Administration Fundamentals',
+                    'Introduction to Penetration Testing',
+                    'Cyber Safety & Digital Protection'
+                ]
+            },
+            'CVET': {
+                title: 'Vulnerability Tester (CVET)',
+                badge: 'Offensive',
+                duration: '3 Months',
+                image: 'courses/CVET.png',
+                about: 'Hacktura Certified Vulnerability Exploit Tester is an intermediate-level offensive program focusing on real-world hacking techniques, vulnerability assessment, and exploitation methodologies used by professionals.',
+                learning: [
+                    'Advanced Vulnerability Scanning',
+                    'OWASP Top 10 Web Security',
+                    'SQL Injection & XSS (Practical)',
+                    'Metasploit Framework Mastery',
+                    'Post-Exploitation Techniques'
+                ]
+            },
+            'HCRT': {
+                title: 'Red Team Specialist (HCRT)',
+                badge: 'Elite Red Team',
+                duration: '5 Months',
+                image: 'courses/HCRT.png',
+                about: 'Hacktura Certified Red Team Specialist is an elite offensive program focusing on adversary simulation. Learn to breach enterprise environments stealthily, moving laterally and maintaining persistence like a real-world threat actor.',
+                learning: [
+                    'Active Directory Attacks',
+                    'Adversary Simulation Strategies',
+                    'Lateral Movement & Persistence',
+                    'Evasion of EDR & AV Systems',
+                    'Command & Control (C2) Setup'
+                ]
+            },
+            'HCSP': {
+                title: 'Defensive Security Pro (HCSP)',
+                badge: 'Blue Team',
+                duration: '6 Months',
+                image: 'courses/HCSP.png',
+                about: 'Hacktura Certified Defensive Security Pro is a specialized defensive (Blue Team) program. Learn to protect organizations by monitoring traffic, detecting intrusions, and responding to incidents in a SOC environment.',
+                learning: [
+                    'SOC Operations & SIEM (Splunk)',
+                    'Threat Hunting & Log Analysis',
+                    'Incident Response Lifecycle',
+                    'Network Security Monitoring',
+                    'Endpoint Defense (EDR/XDR)'
+                ]
+            }
+        };
+
+        function openModal(id) {
+            const data = courseData[id];
+            const modal = document.getElementById('courseModal');
+            const body = document.getElementById('modalBody');
+
+            body.innerHTML = `
+                <div class="modal-grid">
+                    <div class="modal-image">
+                        <img src="${data.image}" alt="${data.title}" style="width:100%;">
+                    </div>
+                    <div class="modal-info">
+                        <span class="course-badge">${data.badge}</span>
+                        <h2>${data.title}</h2>
+                        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">${data.about}</p>
+                        
+                        <h4 style="margin-bottom: 1rem; font-weight: 800;">Curriculum Highlights:</h4>
+                        <ul class="learning-list">
+                            ${data.learning.map(item => `<li><i data-lucide="check-circle" size="18"></i> ${item}</li>`).join('')}
+                        </ul>
+                        
+                        <div style="display: flex; align-items: center; gap: 2rem; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+                            <div>
+                                <p style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Duration</p>
+                                <p style="font-weight: 800; color: var(--secondary);">${data.duration}</p>
+                            </div>
+                            <a href="https://wa.me/918138030292" target="_blank" class="cta-btn" style="width: 100%; text-align: center;">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            lucide.createIcons();
+            modal.style.display = 'flex';
+            setTimeout(() => modal.classList.add('active'), 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(e) {
+            if (e.target === document.getElementById('courseModal') || e.target.closest('.modal-close')) {
+                const modal = document.getElementById('courseModal');
+                modal.classList.remove('active');
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = '';
+                }, 400);
+            }
+        }
+
+        // Brick observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.brick, .brick-group').forEach(el => observer.observe(el));
+    </script>
+</body>
+
+</html>
